@@ -1,7 +1,7 @@
 // js/api.js
 
-// Apunta a tu backend en Node
-const BASE_URL = 'http://localhost:3001/api';
+// Apunta a tu backend en Render (producción)
+const BASE_URL = 'https://supermercado-nova-backend.onrender.com/api';
 
 async function handleResponse (res, msgError) {
   if (!res.ok) {
@@ -65,7 +65,9 @@ export const api = {
     }
     // 204 sin body → devolvemos true
     return true;
-  }, // =============
+  },
+
+  // =============
   // PAGO (Mercado Pago)
   // ============
 
