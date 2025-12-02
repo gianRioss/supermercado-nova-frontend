@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperMercado Nova · Nosotros</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <header class="site-header">
+  <div class="container header-content">
+    <a href="index.html" class="logo" aria-label="Ir a inicio">🛒 SuperMercado <strong>Nova</strong></a>
+    <form id="searchForm" class="search" role="search" aria-label="Buscar productos">
+      <input id="searchInput" type="search" name="q" placeholder="Buscar productos, marcas…" aria-label="Buscar" />
+      <button class="btn" type="submit">Buscar</button>
+    </form>
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__link" href="index.html">Inicio</a>
+      <a class="nav__link" href="alta.html">Alta</a>
+      <a class="nav__link" href="contacto.html">Contacto</a>
+      <a class="nav__link" href="nosotros.html">Nosotros</a>
+    </nav>
+  </div>
+ </header>
+
+
+  <main class="container">
+    <h1 class="h1">Quiénes somos</h1>
+    <p>
+      En <strong>SuperMercado Nova</strong> creemos en un e-commerce simple, rápido y accesible. Esta web es parte de un
+      proyecto académico del Bootcamp Full Stack y busca exhibir buenas prácticas de HTML, CSS y JavaScript sin frameworks.
+    </p>
+    <div class="feature-grid">
+      <article class="feature">
+        <h3>Calidad</h3>
+        <p>Trabajamos con marcas líderes y control de stock.</p>
+      </article>
+      <article class="feature">
+        <h3>Envíos</h3>
+        <p>Opción de <em>envío sin cargo</em> en productos seleccionados.</p>
+      </article>
+      <article class="feature">
+        <h3>Soporte</h3>
+        <p>Atención al cliente y contacto directo desde el sitio.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+  <div class="container footer-content">
+    <p>© <span id="year"></span> SuperMercado Nova · Hecho para Bootcamp Full Stack</p>
+    <ul class="footer-links">
+      <li><a href="#">Términos</a></li>
+      <li><a href="#">Privacidad</a></li>
+      <li><a href="contacto.html">Soporte</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="js/app.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+    
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperMercado Nova · Contacto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+     <header class="site-header">
+  <div class="container header-content">
+    <a href="index.html" class="logo" aria-label="Ir a inicio">🛒 SuperMercado <strong>Nova</strong></a>
+    <form id="searchForm" class="search" role="search" aria-label="Buscar productos">
+      <input id="searchInput" type="search" name="q" placeholder="Buscar productos, marcas…" aria-label="Buscar" />
+      <button class="btn" type="submit">Buscar</button>
+    </form>
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__link" href="index.html">Inicio</a>
+      <a class="nav__link" href="alta.html">Alta</a>
+      <a class="nav__link" href="contacto.html">Contacto</a>
+      <a class="nav__link" href="nosotros.html">Nosotros</a>
+    </nav>
+  </div>
+  </header>
+
+
+  <main class="container">
+    <h1 class="h1">Contacto</h1>
+
+    <form id="formContacto" class="form" novalidate>
+      <div class="form__row">
+        <label for="cNombre">Nombre *</label>
+        <input id="cNombre" name="nombre" type="text" required minlength="3" maxlength="60" />
+      </div>
+
+      <div class="form__row">
+        <label for="cEmail">E-mail *</label>
+        <input id="cEmail" name="email" type="email" required inputmode="email" />
+      </div>
+
+      <div class="form__row">
+        <label for="cComentarios">Comentarios *</label>
+        <textarea id="cComentarios" name="comentarios" required minlength="10" maxlength="800" rows="5"></textarea>
+        <small class="hint">10–800 caracteres</small>
+      </div>
+
+      <div class="form__actions">
+        <button class="btn" type="submit">Enviar</button>
+        <button class="btn btn--ghost" type="reset">Limpiar</button>
+      </div>
+    </form>
+
+    <p id="msgContacto" class="alert" role="status" aria-live="polite"></p>
+  </main>
+
+    <footer class="site-footer">
+  <div class="container footer-content">
+    <p>© <span id="year"></span> SuperMercado Nova · Hecho para Bootcamp Full Stack</p>
+    <ul class="footer-links">
+      <li><a href="#">Términos</a></li>
+      <li><a href="#">Privacidad</a></li>
+      <li><a href="contacto.html">Soporte</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="js/app.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

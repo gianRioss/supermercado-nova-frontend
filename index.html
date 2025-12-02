@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SuperMercado Nova</title>
+
+  <meta name="description" content="SuperMercado Nova · Proyecto SPA del Bootcamp Full Stack con catálogo de productos, carrito de compras y formularios de alta y contacto." />
+  <meta name="theme-color" content="#0b0f19" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <!-- Logo / marca -->
+      <a href="#/home" class="logo" aria-label="Ir al inicio">
+        🛒 SuperMercado <strong>Nova</strong>
+      </a>
+
+      <!-- Buscador + carrito -->
+      <form id="searchForm" class="search" role="search">
+        <input
+          id="searchInput"
+          class="search__input"
+          type="search"
+          placeholder="Buscar productos, marcas..."
+          aria-label="Buscar productos, marcas y categorías"
+        />
+        <button class="btn" type="submit">Buscar</button>
+
+        <!-- Botón de carrito -->
+        <button id="cartButton" class="btn btn--ghost" type="button" aria-label="Abrir carrito de compras">
+          🛒 <span id="cartCount">0</span>
+        </button>
+      </form>
+
+      <!-- Navegación principal -->
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="nav__link" href="#/home" aria-current="page">Inicio</a>
+        <a class="nav__link" href="#/alta">Alta</a>
+        <a class="nav__link" href="#/contacto">Contacto</a>
+        <a class="nav__link" href="#/nosotros">Nosotros</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenedor SPA -->
+  <main id="app" class="container" aria-live="polite">
+    <!-- JS inyecta Home / Alta / Contacto / Nosotros -->
+  </main>
+
+  <!-- Modal de carrito -->
+  <div id="cartOverlay" class="modal-overlay hidden">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <button class="modal__close" id="cartCloseBtn" type="button" aria-label="Cerrar carrito">&times;</button>
+      <h2 id="cartTitle" class="h2">Carrito de compras</h2>
+
+      <div id="cartBody" class="modal__body">
+        <p>Tu carrito está vacío.</p>
+      </div>
+
+      <div class="modal__footer">
+        <div class="modal__total">
+          Total: <span id="cartTotal">$ 0,00</span>
+        </div>
+        <div class="modal__actions">
+          <button id="cartClearBtn" class="btn btn--ghost" type="button">Vaciar carrito</button>
+          <button id="cartConfirmBtn" class="btn" type="button">Confirmar pedido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="year"></span> SuperMercado Nova · Hecho para Bootcamp Full Stack</p>
+      <ul class="footer-links">
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#/contacto">Soporte</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script type="module" src="js/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

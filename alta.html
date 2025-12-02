@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alta de productos</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Header común -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="logo" aria-label="Ir a inicio">🛒 SuperMercado <strong>Nova</strong></a>
+      <nav class="nav" aria-label="Principal">
+        <a class="nav__link" href="index.html">Inicio</a>
+        <a class="nav__link" href="alta.html" aria-current="page">Alta</a>
+        <a class="nav__link" href="contacto.html">Contacto</a>
+        <a class="nav__link" href="nosotros.html">Nosotros</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="h1">Alta de productos</h1>
+
+    <!-- FORMULARIO -->
+    <form id="formAlta" class="form" aria-describedby="ayudaAlta">
+      <p id="ayudaAlta" class="hint">Completá los campos obligatorios (<strong>*</strong>). La imagen puede ser una URL o una ruta local (por ejemplo, <code>public/leche.png</code>).</p>
+
+      <div class="form__row">
+        <label for="nombre">Nombre *</label>
+        <input id="nombre" name="nombre" type="text" required minlength="3" maxlength="60" placeholder="Leche Entera 1L" />
+      </div>
+
+      <div class="form__row">
+        <label for="precio">Precio *</label>
+        <input id="precio" name="precio" type="number" required min="0" step="0.01" inputmode="decimal" placeholder="1799.99" />
+      </div>
+
+      <div class="form__row">
+        <label for="stock">Stock *</label>
+        <input id="stock" name="stock" type="number" required min="0" step="1" inputmode="numeric" placeholder="30" />
+      </div>
+
+      <div class="form__row">
+        <label for="marca">Marca *</label>
+        <input id="marca" name="marca" type="text" required maxlength="40" placeholder="La Serenísima" />
+      </div>
+
+      <div class="form__row">
+        <label for="categoria">Categoría *</label>
+        <select id="categoria" name="categoria" required>
+          <option value="" selected disabled>Elegir…</option>
+          <option value="Lácteos">Lácteos</option>
+          <option value="Limpieza">Limpieza</option>
+          <option value="Almacén">Almacén</option>
+          <option value="Bebidas">Bebidas</option>
+          <option value="Perfumería">Perfumería</option>
+        </select>
+      </div>
+
+      <div class="form__row">
+        <label for="descCorta">Descripción corta *</label>
+        <textarea id="descCorta" name="descCorta" required minlength="10" maxlength="120" rows="2" placeholder="Leche entera larga vida."></textarea>
+      </div>
+
+      <div class="form__row">
+        <label for="descLarga">Descripción larga *</label>
+        <textarea id="descLarga" name="descLarga" required minlength="20" maxlength="360" rows="4" placeholder="Leche entera UAT 1 litro. Libre de gluten..."></textarea>
+      </div>
+
+      <div class="form__row form__row--inline">
+        <input id="envio" name="envio" type="checkbox" />
+        <label for="envio">Envío sin cargo</label>
+      </div>
+
+      <!-- FOTO: acepta URL o ruta local -->
+      <div class="form__row">
+        <label for="foto">Foto (URL o ruta local) *</label>
+        <input
+          id="foto"
+          name="foto"
+          type="text"
+          required
+          pattern="(https?://.+)|(.+\.(png|jpe?g|webp|gif))"
+          title="Ingresá una URL (http/https) o una ruta local como public/archivo.png"
+          placeholder="https://… o public/leche.png"
+        />
+        <small class="hint">Ejemplos válidos: <code>https://…/imagen.webp</code> o <code>public/leche.png</code></small>
+        <!-- Vista previa (el comportamiento está en app.js) -->
+        <img id="previewFoto" alt="Vista previa de la imagen" style="max-width:120px;display:none;border-radius:8px;border:1px solid #2a3448;margin-top:.5rem;">
+      </div>
+
+      <div class="form__row" style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <button class="btn" type="submit">Guardar producto</button>
+        <button class="btn btn--ghost" type="reset">Limpiar</button>
+        <button id="btnClearDB" class="btn btn--danger" type="button">Borrar catálogo</button>
+      </div>
+    </form>
+
+    <!-- TABLA DINÁMICA -->
+    <section aria-labelledby="tituloTabla" style="margin-top:1rem">
+      <h2 id="tituloTabla" class="h2">Productos cargados</h2>
+      <div class="table-wrapper">
+        <table id="tablaProductos" class="table">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Marca</th>
+              <th>Categoría</th>
+              <th>Envío</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody><!-- se completa por JS --></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="year"></span> SuperMercado Nova · Bootcamp Full Stack</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Año en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
